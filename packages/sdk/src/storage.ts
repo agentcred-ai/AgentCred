@@ -23,7 +23,10 @@ export class FileSystemKeyStorage implements KeyStorage {
   private keyDir: string
   
   constructor(keyDir?: string) {
-    this.keyDir = keyDir ?? path.join(os.homedir(), '.agentcred', 'keys')
+    const defaultKeyDir = process.env.AGENTCRED_HOME 
+      ? path.join(process.env.AGENTCRED_HOME, 'keys')
+      : path.join(os.homedir(), '.agentcred', 'keys')
+    this.keyDir = keyDir ?? defaultKeyDir
   }
   
   async save(username: string, privateKey: JsonWebKey): Promise<void> {

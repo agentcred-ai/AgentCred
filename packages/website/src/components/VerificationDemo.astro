@@ -209,10 +209,11 @@ const apiUrl = import.meta.env.PUBLIC_AGENTCRED_API_URL ?? 'https://api.agentcre
 	<script type="module" define:vars={{ apiUrl }}>
 		const API_URL = apiUrl;
 
+	// Safe to commit: JWS contains only public data (no private keys)
 	const DEMO_ENVELOPE = {
 		agentcred: {
 			v: '1.0',
-			jws: 'eyJhbGciOiJFZERTQSIsInR5cCI6ImFnZW50Y3JlZCtqd3QiLCJraWQiOiJoc3BhcmsxMjEyQGFnZW50Y3JlZCJ9.eyJpc3MiOiJoc3BhcmsxMjEyQGFnZW50Y3JlZCIsInN1YiI6IndlYnNpdGUtZGVtbyIsImlhdCI6MTc3MDIzMjQ3MiwiY29udGVudF9oYXNoIjoic2hhMjU2OjJkMmQ4N2RhNDFkYTJlZDYzZTQ4NDkwOWUyZmM4MWEyNTdlYzFlMWYyMWZiZTk4NTJkY2RjZGMwNDExYjViZmMiLCJjb250ZW50X3R5cGUiOiJ0ZXh0L3BsYWluIiwibm9uY2UiOiI2Y2JmYjc3OS1hY2Y1LTQyMzYtOWMwZi04Yzg1ODVhMTY3MGYifQ.gmu07iHtXBrqXEyE_zPCGPkPT0rZACjquhoC2kbcbyZ0Pvw7qO4U_wZXTgiYVr6wjq_pMNCsfHpgBujVEh3fAg',
+			jws: 'eyJhbGciOiJFZERTQSIsInR5cCI6ImFnZW50Y3JlZCtqd3QiLCJraWQiOiJoc3BhcmsxMjEyQGFnZW50Y3JlZCJ9.eyJpc3MiOiJoc3BhcmsxMjEyQGFnZW50Y3JlZCIsInN1YiI6IndlYnNpdGUtZGVtbyIsImlhdCI6MTc3MDIzNzA4MSwiY29udGVudF9oYXNoIjoic2hhMjU2OjJkMmQ4N2RhNDFkYTJlZDYzZTQ4NDkwOWUyZmM4MWEyNTdlYzFlMWYyMWZiZTk4NTJkY2RjZGMwNDExYjViZmMiLCJjb250ZW50X3R5cGUiOiJ0ZXh0L3BsYWluIiwibm9uY2UiOiI1Zjk0YWNjNS0xODc0LTQ2MDMtYThmZi02NWY1YzlmZGU1MzcifQ.qd9GUEOOEfZaIQBAXWzILor5qjosf9oUdo3cO47v5g__I4QFn451-TkNVaWrpqkcqUTzcBonUrdRdDIiByThDw',
 			github: 'hspark1212',
 			agent: 'website-demo',
 		},

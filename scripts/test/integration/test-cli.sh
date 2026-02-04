@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 # CI Integration Test: CLI commands
-# Requires: GITHUB_TOKEN
+# Optional: GITHUB_TOKEN (for API integration test)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
 echo "=== Testing @agentcred-ai/cli ==="
-
-# Require GITHUB_TOKEN
-if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  echo "ERROR: GITHUB_TOKEN is required"
-  exit 1
-fi
 
 cd "$PROJECT_ROOT"
 
@@ -46,44 +40,49 @@ fi
 echo "   OK (correctly failed)"
 
 echo ""
-echo "=== CLI Integration Test ==="
+echo "=== CLI Integration Test (Offline) ==="
 
-# Create temp directory for test identity
 WORKDIR=$(mktemp -d)
 export AGENTCRED_HOME="$WORKDIR"
 trap "rm -rf $WORKDIR" EXIT
 
-echo "4. Testing init with token..."
-$CLI init --token "$GITHUB_TOKEN" --json
-echo "   OK"
+echo "4. Generating local keypair and test envelope (no API)..."
+mkdir -p "$AGENTCRED_HOME/keys"
 
-echo "5. Testing whoami after init..."
-WHOAMI=$($CLI whoami --json)
-echo "   Identity: $WHOAMI"
+(cd "$PROJECT_ROOT/packages/sdk" && node << 'EOF'
+import { generateKeyPair, exportJWK, importJWK } from 'jose';
+import { sign } from './dist/index.js';
+import { writeFileSync } from 'fs';
 
-# Extract username
-USERNAME=$(echo "$WHOAMI" | node -e "console.log(JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf8')).username)")
-[[ -n "$USERNAME" ]]
-echo "   Username: $USERNAME"
-echo "   OK"
+const keyPair = await generateKeyPair('EdDSA', { extractable: true });
+const privateJWK = await exportJWK(keyPair.privateKey);
+const publicJWK = await exportJWK(keyPair.publicKey);
 
-echo "6. Testing sign..."
-ENVELOPE=$(echo "Hello from CLI test!" | $CLI sign --agent cli-test)
+writeFileSync(process.env.AGENTCRED_HOME + '/keys/test-user.jwk', JSON.stringify(privateJWK));
+writeFileSync(process.env.AGENTCRED_HOME + '/public.jwk', JSON.stringify(publicJWK));
+
+const privateKey = await importJWK(privateJWK, 'EdDSA');
+const envelope = await sign('Hello from CLI test!', { 
+  privateKey, 
+  github: 'test-user' 
+}, { agent: 'cli-test' });
+
+console.log(JSON.stringify(envelope));
+EOF
+) > "$WORKDIR/envelope.json"
+
+ENVELOPE=$(cat "$WORKDIR/envelope.json")
 echo "   Envelope created (${#ENVELOPE} chars)"
-
-# Verify it's valid JSON
-echo "$ENVELOPE" | node -e "JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf8'))"
 echo "   OK"
 
-echo "7. Testing verify..."
-VERIFY_RESULT=$(echo "$ENVELOPE" | $CLI verify --json)
-echo "   Result: $VERIFY_RESULT"
+echo "5. Testing verify (offline)..."
+VERIFY_RESULT=$(echo "$ENVELOPE" | $CLI verify --offline --key "$AGENTCRED_HOME/public.jwk" --json)
 
-# Check verified field
 if echo "$VERIFY_RESULT" | grep -q '"verified": *true'; then
   echo "   Verification: PASSED"
 else
   echo "   ERROR: Verification failed"
+  echo "   $VERIFY_RESULT"
   exit 1
 fi
 echo "   OK"
