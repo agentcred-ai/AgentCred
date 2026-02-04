@@ -1,0 +1,13 @@
+packages:
+  - 'packages/*'
+  - 'examples/*'
+
+catalogs:
+  default:
+    typescript: ^5.8.0
+    tsup: ^8.0.0
+    vitest: ^3.0.0
+    '@vitest/coverage-v8': ^3.0.0
+  runtime:
+    jose: ^6.0.0
+    zod: ^3.24.0

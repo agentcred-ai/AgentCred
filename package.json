@@ -1,0 +1,22 @@
+{
+  "name": "agentcred-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "lint": "turbo lint",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.1",
+    "@vitest/coverage-v8": "catalog:default",
+    "husky": "^9.1.7",
+    "tsup": "catalog:default",
+    "turbo": "^2.0.0",
+    "typescript": "catalog:default",
+    "vitest": "catalog:default"
+  },
+  "packageManager": "pnpm@10.0.0"
+}

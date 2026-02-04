@@ -1,0 +1,12 @@
+name = "agentcred-api"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+routes = [
+  { pattern = "api.agentcred.dev/*", zone_name = "agentcred.dev" }
+]
+
+[[kv_namespaces]]
+binding = "KEYS"
+id = "d0392d67b2c04a4daf7f2ca7a5da1884"
+preview_id = "c34dc975ff364a56b95aa3c3d643d310"

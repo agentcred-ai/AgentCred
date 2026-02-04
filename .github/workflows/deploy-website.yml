@@ -1,0 +1,43 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/website/**"
+      - ".github/workflows/deploy-website.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build website
+        run: pnpm --filter @agentcred-ai/website build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: agentcred-website
+          directory: packages/website/dist
+          gitHubToken: ${{ secrets.AGENTCRED_GITHUB_TOKEN }}
+          branch: main

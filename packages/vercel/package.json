@@ -1,0 +1,57 @@
+{
+  "name": "@agentcred-ai/vercel",
+  "version": "0.1.1",
+  "description": "AgentCred middleware for Vercel AI SDK — auto-sign agent outputs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agentcred-ai/sdk": "workspace:*"
+  },
+  "peerDependencies": {
+    "ai": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ai": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "ai": "^4.0.0",
+    "@ai-sdk/provider": "^1.0.0",
+    "jose": "^6.1.3",
+    "tsup": "catalog:default",
+    "typescript": "catalog:default",
+    "vitest": "catalog:default"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentcred-ai/agentcred",
+    "directory": "packages/vercel"
+  },
+  "homepage": "https://agentcred.dev",
+  "keywords": [
+    "agentcred",
+    "vercel",
+    "ai-sdk",
+    "middleware",
+    "agent-signing"
+  ]
+}

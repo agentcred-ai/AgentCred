@@ -1,0 +1,11 @@
+{
+  "name": "@agentcred-ai/example-mcp-integration",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Example: MCP server integration with AgentCred",
+  "type": "module",
+  "scripts": {
+    "start": "echo 'TODO: implement MCP integration example'"
+  },
+  "license": "MIT"
+}

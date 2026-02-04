@@ -1,0 +1,43 @@
+---
+import '../styles/animations.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "AgentCred is an open-source protocol that cryptographically proves which human is responsible for an AI agent's actions." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<!-- Google Fonts: Space Grotesk, IBM Plex Sans, JetBrains Mono -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-primary text-text-primary antialiased font-sans selection:bg-accent-green selection:text-primary">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	/* Global styles if needed */
+	:root {
+		--accent-gradient: linear-gradient(45deg, #21E786, #60A5FA);
+	}
+	html {
+		font-family: 'IBM Plex Sans', system-ui, sans-serif;
+		background: #0B0F14;
+	}
+	code {
+		font-family: 'JetBrains Mono', monospace;
+	}
+</style>

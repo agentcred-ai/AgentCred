@@ -1,0 +1,14 @@
+{
+  "name": "@agentcred-ai/example-basic-signing",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Example: Basic credential signing with AgentCred SDK",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx index.ts"
+  },
+  "dependencies": {
+    "@agentcred-ai/sdk": "workspace:*"
+  },
+  "license": "MIT"
+}

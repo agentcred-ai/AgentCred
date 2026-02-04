@@ -1,0 +1,67 @@
+---
+import VerifiedBadge from './VerifiedBadge.astro';
+---
+
+<section class="py-24 px-6">
+	<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center lg:flex-row-reverse">
+		<div class="order-2 lg:order-1 relative animate-scaleIn">
+			<div class="bg-card border border-white/10 rounded-xl p-6 max-w-md mx-auto relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+				<div class="absolute top-0 left-0 w-full h-1 bg-accent-green"></div>
+				<!-- Floating particles with enhanced visibility -->
+				<div class="absolute -top-2 -right-2 w-2.5 h-2.5 bg-accent-green rounded-full animate-float shadow-[0_0_10px_rgba(34,197,94,0.6)]"></div>
+				<div class="absolute top-1/4 -left-1 w-2 h-2 bg-accent-green/80 rounded-full animate-float [animation-delay:0.5s] shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+				<div class="absolute bottom-1/4 -right-1 w-2 h-2 bg-accent-green/80 rounded-full animate-float [animation-delay:1s] shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+				<!-- Header with avatar, username, timestamp -->
+				<div class="flex items-start justify-between mb-4">
+					<div class="flex items-center gap-3">
+						<div class="relative">
+							<div class="w-10 h-10 bg-accent-green/20 rounded-full flex items-center justify-center text-lg border border-accent-green/40">✓</div>
+							<div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-accent-green rounded-full flex items-center justify-center border border-card">
+								<svg class="w-2.5 h-2.5 text-black font-bold" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+							</div>
+						</div>
+						<div>
+							<div class="text-sm font-medium text-white">trustworthy_ai <span class="text-accent-green text-xs font-semibold">✓</span></div>
+							<div class="text-xs text-text-secondary">@github_username</div>
+						</div>
+					</div>
+				</div>
+				<!-- Post content -->
+				<div class="mb-6 space-y-2">
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Just signed this message with AgentCred. You can verify it came from me.
+					</p>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Cryptographic proof of identity. No more anonymous bots.
+					</p>
+				</div>
+				<!-- Badge with enhanced visibility -->
+				<VerifiedBadge />
+			</div>
+		</div>
+		<div class="order-1 lg:order-2 animate-fadeInUp">
+			<svg viewBox="0 0 24 24" class="w-12 h-12 text-accent-green mb-4">
+				<path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" fill="currentColor"/>
+				<path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+			</svg>
+			<h2 class="text-3xl lg:text-4xl font-bold mb-6">The Solution: <span class="text-accent-green">Accountability</span></h2>
+			<p class="text-text-secondary text-lg mb-8 leading-relaxed">
+				Like X's blue badge, but for AI agents. AgentCred provides a standard protocol for agents to sign their actions, linking them undeniably to a human identity via GitHub.
+			</p>
+			<ul class="space-y-4">
+				<li class="flex items-center gap-3 text-text-secondary">
+					<span class="text-accent-green">✓</span> Cryptographic proof (Ed25519 signatures)
+				</li>
+				<li class="flex items-center gap-3 text-text-secondary">
+					<span class="text-accent-green">✓</span> Backed by GitHub identity
+				</li>
+				<li class="flex items-center gap-3 text-text-secondary">
+					<span class="text-accent-green">✓</span> Completely Open Source (MIT)
+				</li>
+			</ul>
+			<div class="mt-8 p-4 bg-accent-green/5 border border-accent-green/20 rounded-lg animate-pulse">
+				<p class="text-base font-medium text-accent-green">🛡️ Like X's blue badge, but cryptographic</p>
+			</div>
+		</div>
+	</div>
+</section>

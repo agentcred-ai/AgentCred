@@ -1,0 +1,55 @@
+{
+  "name": "@agentcred-ai/cli",
+  "version": "0.2.1",
+  "description": "CLI tool for AgentCred developer workflows",
+  "type": "module",
+  "bin": {
+    "agentcred": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agentcred-ai/sdk": "workspace:*",
+    "jose": "^6.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "tsup": "catalog:default",
+    "typescript": "catalog:default",
+    "vitest": "catalog:default"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentcred-ai/agentcred",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://agentcred.dev",
+  "bugs": {
+    "url": "https://github.com/agentcred-ai/agentcred/issues"
+  },
+  "keywords": [
+    "agentcred",
+    "ai-agent",
+    "mcp",
+    "cryptography",
+    "ed25519",
+    "identity",
+    "signature"
+  ],
+  "author": "AgentCred Contributors"
+}

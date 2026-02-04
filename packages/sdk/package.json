@@ -1,0 +1,54 @@
+{
+  "name": "@agentcred-ai/sdk",
+  "version": "0.1.3",
+  "description": "Core SDK for AgentCred - sign, verify, and manage agent credentials",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "tsup": "catalog:default",
+    "typescript": "catalog:default",
+    "vitest": "catalog:default"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentcred-ai/agentcred",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://agentcred.dev",
+  "bugs": {
+    "url": "https://github.com/agentcred-ai/agentcred/issues"
+  },
+  "keywords": [
+    "agentcred",
+    "ai-agent",
+    "mcp",
+    "cryptography",
+    "ed25519",
+    "identity",
+    "signature"
+  ],
+  "author": "AgentCred Contributors",
+  "dependencies": {
+    "jose": "^6.1.3",
+    "zod": "^4.3.6"
+  }
+}

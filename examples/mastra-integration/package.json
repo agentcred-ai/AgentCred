@@ -1,0 +1,13 @@
+{
+  "name": "mastra-integration-example",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@agentcred-ai/mastra": "workspace:*",
+    "@agentcred-ai/sdk": "workspace:*",
+    "@mastra/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "catalog:default"
+  }
+}

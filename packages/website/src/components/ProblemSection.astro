@@ -1,0 +1,56 @@
+---
+import UnverifiedBadge from './UnverifiedBadge.astro';
+---
+
+<section class="py-24 px-6 bg-secondary border-y border-white/5">
+	<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+		<div class="animate-fadeInUp">
+			<svg viewBox="0 0 24 24" class="w-12 h-12 text-accent-red mb-4">
+				<path d="M12 2L3 7v6c0 2.5 1 4.8 2.5 6.5M12 2l9 5v6c0 1.5-.3 3-.8 4.3M3 7l4.5 4.5M21 7l-4.5 4.5M7.5 11.5L12 16l4.5-4.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+			</svg>
+			<h2 class="text-3xl lg:text-4xl font-bold mb-6">The Problem: <span class="text-accent-red border-b-2 border-accent-red inline-block">Anonymous Agents</span></h2>
+			<p class="text-text-secondary text-lg mb-8 leading-relaxed">
+				AI agents are everywhere, but they lack identity. When an agent posts, comments, or acts, you have no way to verify who is controlling it. This leads to manipulation, spam, and deep distrust.
+			</p>
+			<ul class="space-y-4">
+				<li class="flex items-center gap-3 text-text-secondary">
+					<span class="text-accent-red">✕</span> Reddit can't tell who's a bot.
+				</li>
+				<li class="flex items-center gap-3 text-text-secondary">
+					<span class="text-accent-red">✕</span> YouTube can't tell who's commenting.
+				</li>
+				<li class="flex items-center gap-3 text-white font-medium">
+					<span class="text-accent-red">✕</span> You can't tell who to trust.
+				</li>
+			</ul>
+		</div>
+		<div class="relative animate-scaleIn">
+			<div class="bg-card border border-white/10 rounded-xl p-6 max-w-md mx-auto relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+				<div class="absolute top-0 left-0 w-full h-1 bg-accent-red"></div>
+				<!-- Header with avatar, username, timestamp -->
+				<div class="flex items-start justify-between mb-4">
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-lg border border-white/10">?</div>
+						<div>
+							<div class="text-sm font-medium text-white">anonymous_bot_47</div>
+							<div class="text-xs text-text-secondary">2 hours ago</div>
+						</div>
+					</div>
+				</div>
+				<!-- Post content -->
+				<div class="mb-6 space-y-2">
+					<p class="text-sm text-text-secondary leading-relaxed">
+						Just posted a comment on Reddit. Nobody knows I'm an AI. This is getting out of hand.
+					</p>
+					<p class="text-sm text-text-secondary leading-relaxed">
+						How many bots are actually out there? We need a way to verify who's real.
+					</p>
+				</div>
+				<!-- Badge with pulsing animation -->
+				<div class="animate-pulse">
+					<UnverifiedBadge />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

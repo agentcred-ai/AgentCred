@@ -1,0 +1,30 @@
+node_modules/
+dist/
+.turbo/
+.wrangler/
+*.log
+.DS_Store
+.worktree/
+package-lock.json
+packages/website/test-results/
+
+# Development
+.claude/
+.sisyphus/
+.vscode/
+.idea/
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Cryptographic keys
+*.jwk
+.agentcred/
+
+# npm auth
+.npmrc
+__pycache__/
+*.pyc

@@ -1,0 +1,141 @@
+---
+---
+
+<section id="quickstart" class="py-24 px-6">
+	<div class="max-w-6xl mx-auto">
+		<div class="text-center">
+			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-accent-green">
+				RECOMMENDED PATH
+			</div>
+			<h2 class="text-4xl lg:text-headline font-display font-bold mt-4">Get verified in 3 minutes.</h2>
+			<p class="text-lg text-text-secondary max-w-2xl mx-auto mt-4">
+				This is the fastest way to link your GitHub identity and start signing agent output.
+			</p>
+		</div>
+
+		<div class="mt-12 grid lg:grid-cols-3 gap-6">
+			<div class="bg-card border border-white/10 rounded-2xl p-6 shadow-elevated">
+				<div class="text-xs uppercase tracking-wider text-text-secondary">Step 1</div>
+				<h3 class="text-xl font-semibold mt-3">Link your GitHub identity</h3>
+				<p class="text-sm text-text-secondary mt-2">OAuth device flow. No tokens to manage.</p>
+				<div class="relative mt-4" data-copy-block>
+					<button type="button" class="absolute right-3 top-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-text-secondary hover:text-white hover:border-white/20 transition-colors" data-copy>Copy</button>
+					<pre class="rounded-xl bg-black/40 border border-white/10 p-4 pt-9 pr-12 text-xs font-mono text-text-primary whitespace-pre leading-relaxed overflow-x-auto" data-copy-source><code>npx @agentcred-ai/cli init</code></pre>
+				</div>
+			</div>
+
+			<div class="bg-card border border-white/10 rounded-2xl p-6 shadow-elevated">
+				<div class="text-xs uppercase tracking-wider text-text-secondary">Step 2</div>
+				<h3 class="text-xl font-semibold mt-3">Sign your agent output</h3>
+				<p class="text-sm text-text-secondary mt-2">Any text, any toolchain.</p>
+				<div class="relative mt-4" data-copy-block>
+					<button type="button" class="absolute right-3 top-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-text-secondary hover:text-white hover:border-white/20 transition-colors" data-copy>Copy</button>
+					<pre class="rounded-xl bg-black/40 border border-white/10 p-4 pt-9 pr-12 text-xs font-mono text-text-primary whitespace-pre leading-relaxed overflow-x-auto" data-copy-source><code>echo "Hello from my agent" \
+  | npx @agentcred-ai/cli sign \
+      --agent demo-bot \
+  &gt; envelope.json</code></pre>
+				</div>
+			</div>
+
+			<div class="bg-card border border-white/10 rounded-2xl p-6 shadow-elevated">
+				<div class="text-xs uppercase tracking-wider text-text-secondary">Step 3</div>
+				<h3 class="text-xl font-semibold mt-3">Verify and share</h3>
+				<p class="text-sm text-text-secondary mt-2">Anyone can verify instantly.</p>
+				<div class="relative mt-4" data-copy-block>
+					<button type="button" class="absolute right-3 top-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-text-secondary hover:text-white hover:border-white/20 transition-colors" data-copy>Copy</button>
+					<pre class="rounded-xl bg-black/40 border border-white/10 p-4 pt-9 pr-12 text-xs font-mono text-text-primary whitespace-pre leading-relaxed overflow-x-auto" data-copy-source><code>npx @agentcred-ai/cli verify \
+  &lt; envelope.json</code></pre>
+				</div>
+				<p class="text-xs text-text-secondary mt-3">Paste the envelope into the Verify page to generate a share link.</p>
+			</div>
+		</div>
+
+		<div class="mt-10 grid md:grid-cols-2 gap-6">
+			<div class="bg-surface border border-white/10 rounded-2xl p-6">
+				<h3 class="text-lg font-semibold">Prefer SDK?</h3>
+				<p class="text-sm text-text-secondary mt-2">Sign directly in your codebase.</p>
+				<div class="relative mt-4" data-copy-block>
+					<button type="button" class="absolute right-3 top-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-text-secondary hover:text-white hover:border-white/20 transition-colors" data-copy>Copy</button>
+					<pre class="rounded-xl bg-black/40 border border-white/10 p-4 pt-9 pr-12 text-xs font-mono text-text-primary whitespace-pre leading-relaxed overflow-x-auto" data-copy-source><code>import &#123; createIdentity, sign &#125; from
+  'agentcred'
+
+const identity = await createIdentity(githubToken)
+const envelope = await sign("Hello", &#123;
+  privateKey: identity.privateKey,
+  github: identity.github.username,
+&#125;)</code></pre>
+				</div>
+			</div>
+
+			<div class="bg-surface border border-white/10 rounded-2xl p-6">
+				<h3 class="text-lg font-semibold">Prefer MCP?</h3>
+				<p class="text-sm text-text-secondary mt-2">Sign from your AI IDE (Claude, Cursor).</p>
+				<div class="relative mt-4" data-copy-block>
+					<button type="button" class="absolute right-3 top-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-md border border-white/10 text-text-secondary hover:text-white hover:border-white/20 transition-colors" data-copy>Copy</button>
+					<pre class="rounded-xl bg-black/40 border border-white/10 p-4 pt-9 pr-12 text-xs font-mono text-text-primary whitespace-pre leading-relaxed overflow-x-auto" data-copy-source><code>&#123;
+  "mcpServers": &#123;
+    "agentcred": &#123;
+      "command": "npx",
+      "args": [
+        "-y",
+        "@agentcred-ai/mcp-server"
+      ],
+      "env": &#123;
+        "GITHUB_TOKEN": "ghp_your_token"
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="quickstart-toast" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-black/70 border border-white/10 text-xs text-text-primary opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
+		Copied to clipboard
+	</div>
+
+	<script type="module">
+		const root = document.querySelector('#quickstart');
+		const toast = document.querySelector('#quickstart-toast');
+		let toastTimer;
+
+		function showToast(message) {
+			if (!toast) return;
+			toast.textContent = message;
+			toast.classList.remove('opacity-0', 'translate-y-2');
+			toast.classList.add('opacity-100', 'translate-y-0');
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => {
+				toast.classList.add('opacity-0', 'translate-y-2');
+				toast.classList.remove('opacity-100', 'translate-y-0');
+			}, 1400);
+		}
+
+		async function copyText(text) {
+			try {
+				await navigator.clipboard.writeText(text);
+				showToast('Copied to clipboard');
+			} catch {
+				const textarea = document.createElement('textarea');
+				textarea.value = text;
+				document.body.appendChild(textarea);
+				textarea.select();
+				document.execCommand('copy');
+				textarea.remove();
+				showToast('Copied to clipboard');
+			}
+		}
+
+		root?.addEventListener('click', (event) => {
+			const target = event.target;
+			if (!(target instanceof HTMLElement)) return;
+			if (!target.matches('[data-copy]')) return;
+			const block = target.closest('[data-copy-block]');
+			const source = block?.querySelector('[data-copy-source]');
+			const code = source?.textContent?.trim() ?? '';
+			if (!code) return;
+			copyText(code);
+		});
+	</script>
+</section>

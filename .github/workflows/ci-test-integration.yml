@@ -1,0 +1,87 @@
+name: ci-test-integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit Tests
+        run: pnpm test
+
+  integration:
+    runs-on: ubuntu-latest
+    needs: test
+    env:
+      GITHUB_TOKEN: ${{ secrets.AGENTCRED_GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Integration - SDK
+        run: scripts/test/integration/test-sdk.sh
+
+      - name: Integration - Mastra
+        run: scripts/test/integration/test-mastra.sh
+
+      - name: Integration - Vercel
+        run: scripts/test/integration/test-vercel.sh
+
+      - name: Integration - CLI
+        run: scripts/test/integration/test-cli.sh
+
+      - name: Integration - MCP Server
+        run: scripts/test/integration/test-mcp-server.sh
+
+      - name: Integration - Python
+        run: scripts/test/integration/test-python.sh
+
+      - name: Integration - LangChain
+        run: scripts/test/integration/test-langchain.sh
+
+      - name: Integration - CrewAI
+        run: scripts/test/integration/test-crewai.sh

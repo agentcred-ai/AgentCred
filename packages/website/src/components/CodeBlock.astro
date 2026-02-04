@@ -1,0 +1,25 @@
+---
+---
+
+<div class="bg-card rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+	<div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/5">
+		<div class="w-3 h-3 rounded-full bg-red-500/20"></div>
+		<div class="w-3 h-3 rounded-full bg-yellow-500/20"></div>
+		<div class="w-3 h-3 rounded-full bg-green-500/20"></div>
+		<span class="ml-2 text-xs text-text-secondary font-mono">example.ts</span>
+	</div>
+	<div class="p-6 overflow-x-auto">
+<pre class="font-mono text-sm leading-relaxed"><code class="language-typescript"><span class="text-purple-400">import</span> &#123; createIdentity, sign, verify &#125; <span class="text-purple-400">from</span> <span class="text-green-400">'agentcred'</span>
+
+<span class="text-gray-500">// 1. Create identity (linked to GitHub)</span>
+<span class="text-purple-400">const</span> identity = <span class="text-purple-400">await</span> <span class="text-blue-400">createIdentity</span>(githubToken)
+
+<span class="text-gray-500">// 2. Sign agent output</span>
+<span class="text-purple-400">const</span> envelope = <span class="text-purple-400">await</span> <span class="text-blue-400">sign</span>(<span class="text-green-400">"Hello from my AI agent!"</span>, identity)
+
+<span class="text-gray-500">// 3. Verify anywhere</span>
+<span class="text-purple-400">const</span> result = <span class="text-purple-400">await</span> <span class="text-blue-400">verify</span>(envelope)
+<span class="text-blue-400">console</span>.<span class="text-blue-400">log</span>(result.verified) <span class="text-gray-500">// true</span>
+<span class="text-blue-400">console</span>.<span class="text-blue-400">log</span>(result.github.username) <span class="text-gray-500">// "@yourname"</span></code></pre>
+	</div>
+</div>

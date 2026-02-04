@@ -1,0 +1,19 @@
+[project]
+name = "agentcred"
+version = "0.1.0"
+description = "Cryptographic identity for AI agents — Python wrapper"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://agentcred.dev"
+Repository = "https://github.com/agentcred-ai/agentcred"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
