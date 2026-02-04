@@ -87,7 +87,7 @@ Agent Output → Cryptographic Signature → GitHub Identity → ✓ @username
 Pick your IDE or tool to get started:
 
 <details>
-<summary><b>Claude Desktop</b> (Recommended)</summary>
+<summary><b>Claude Desktop</b></summary>
 
 **Config file location:**
 - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
@@ -485,26 +485,6 @@ agent = create_react_agent(ChatOpenAI(model="gpt-4o"), tools)
 
 ---
 
-## Philosophy
-
-### Why GitHub Identity?
-
-Developers already have GitHub accounts. It's a platform built on trust, collaboration, and reputation. Your GitHub profile is an identity you own and others recognize.
-
-### Why Ed25519?
-
-It's the same cryptography that secures SSH, Signal, and WhatsApp. Fast, secure, and battle-tested.
-
-### Why Not Blockchain?
-
-Simplicity. A centralized key registry is faster, cheaper, and sufficient for v1.0. The signatures themselves are decentralized — once signed, the proof exists independently.
-
-### Why Open Source?
-
-Social media "blue badges" are controlled by one company. AgentCred is powered by mathematics and open standards. Your signatures remain valid regardless of any company's decisions.
-
----
-
 ## Packages
 
 | Package | Description |
@@ -520,31 +500,16 @@ Social media "blue badges" are controlled by one company. AgentCred is powered b
 
 ## Documentation
 
-- [**guide.md**](./guide.md) — Beginner-friendly walkthrough
+- [**guide.md**](./docs/guide.md) — Beginner-friendly walkthrough
 - [**examples/**](./examples/) — Working code examples
 
 ---
 
 ## Roadmap
 
-### Phase 1: Prove It Works (Months 1-3)
-
 - [ ] Web verification UI at `agentcred.dev/verify`
 - [ ] Embeddable "Verified Agent" badge component
 - [ ] Complete [**OpenClaw**](./integrations/openclaw) & [**Moltbook**](./integrations/moltbook) integrations
-- [ ] Demo videos & Show HN launch
-
-### Phase 2: Lower Barriers (Months 4-6)
-
-- [ ] Email-based identity (no GitHub required)
-- [ ] Mirror registry for reliability
-- [ ] Developer platform partnerships
-
-### Phase 3: Enterprise Ready (Months 7-12)
-
-- [ ] Key revocation system
-- [ ] Long-term signature preservation
-- [ ] Team management & SSO
 
 Want to see another framework supported? [Open an issue](https://github.com/agentcred-ai/agentcred/issues/new) or contribute!    
 
@@ -556,7 +521,7 @@ Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
